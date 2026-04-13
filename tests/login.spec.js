@@ -16,6 +16,7 @@ test("Login with valid credentials", async ({ page }) => {
     //Home
     const homePage = new HomePage(page);
     await homePage.verifyProductList('Sauce Labs Backpack');
+    expect(page.locator('.inventory_item_name')).toHaveText('Sauce Labs Backpack');
         await page.waitForTimeout(2000);
 
 
