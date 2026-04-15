@@ -1,10 +1,22 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import { HomePage } from '../pages/homePage';
 import { CartPage } from '../pages/cartPage';
 
 
-test("Login with valid credentials", async ({ page }) => {
+test("Login with valid credentials", async () => {
+
+//Record video and slow down the execution for better visibility
+const browser = await chromium.launch({
+        slowMo: 1000,
+        headless: false
+    });
+    const context = await browser.newContext({
+        recordVideo: {
+            dir: 'videos/'
+        }
+    });
+    const page = await context.newPage();
 
 
     //Login
@@ -28,6 +40,7 @@ test("Login with valid credentials", async ({ page }) => {
     //Cart
     const cartPage = new CartPage(page);
     await cartPage.verifyCart('Sauce Labs Bolt T-Shirt');
+    await page.waitForTimeout(1500);
 });
 
     //await homePage.addToCart('Sauce Labs Bolt T-Shirt');
