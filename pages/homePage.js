@@ -12,7 +12,11 @@ exports.HomePage = class HomePage{
         const productNames = await this.page.locator(this.productlist).allTextContents(); 
         //console.log(productNames);
         //expect(productNames.length).toBeGreaterThan(0);
-        const allProducts = await this.page.$$(this.productlist);
+        // $$ returns an array of elements, we can iterate through them to find the matching product name
+        //$ return only the first element that matches the selector, we can use it to check if the product is present in the list
+        // .all() returns an array of elements, we can iterate through them to find the matching product name same as $$ but with locator
+        //const allProducts = await this.page.$$(this.productlist);
+        const allProducts = await this.page.locator(this.productlist).all();
 
         for(const productName of allProducts){
             console.log(await productName.textContent());

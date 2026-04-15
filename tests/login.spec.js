@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/loginPage';
 import { HomePage } from '../pages/homePage';
 import { CartPage } from '../pages/cartPage';
 import { AdditemPage } from '../pages/additemPage';
+import { MultipleItems } from '../pages/multipleitemsPage.js';
 
 test("Login with valid credentials", async ({page}) => {
 
@@ -44,6 +45,13 @@ test("Login with valid credentials", async ({page}) => {
     const cartPage = new CartPage(page);
     await cartPage.verifyCart('Sauce Labs Bike Light');
     await page.waitForTimeout(1500);
+
+
+    //Add 3 items to cart
+    const multipleItems = new MultipleItems(page);
+    await multipleItems.addMultipleItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie']);
+    await page.waitForTimeout(2000);
+
 });
 
     
