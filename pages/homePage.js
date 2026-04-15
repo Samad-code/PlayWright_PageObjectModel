@@ -26,11 +26,8 @@ exports.HomePage = class HomePage{
     
     }
 
-    /*async addToCart(productName){
-        const slug = productName.toLowerCase().replace(/ /g, '-');
-        await this.page.click(`[data-test="add-to-cart-${slug}"]`);
-    }*/
-
+    
+/*
     async addToCart(productName){
         const slug = productName.toLowerCase().replace(/ /g, '-');
         const addToCartButton = await this.page.locator(`[data-test="add-to-cart-${slug}"]`);
@@ -40,5 +37,5 @@ exports.HomePage = class HomePage{
         } else {
             throw new Error(`Add to cart button for "${productName}" not found.`);
         }
-    }
+    }*/
 };
