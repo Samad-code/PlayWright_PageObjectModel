@@ -5,7 +5,7 @@ exports.CartPage = class CartPage{
     constructor(page){
         this.page = page;
         this.cart = '.shopping_cart_link';
-        this.cartItem = '.cart_list'
+        this.cartItem = '.cart_list .cart_item .inventory_item_name';
     }
 
     async verifyCart(item){
