@@ -10,7 +10,10 @@ exports.AdditemPage = class AdditemPage{
 
 async addToCart(productName){
         const slug = productName.toLowerCase().replace(/ /g, '-');
-        const addToCartButton = await this.page.locator(`[data-test="add-to-cart-${slug}"]`);
+        const addToCartButton = await this.page.locator(`#add-to-cart-${slug}`);
+        console.log(await addToCartButton.count());
+        console.log(`Attempting to add "${addToCartButton}" to cart...`);
+        await expect(addToCartButton).toBeVisible({ timeout: 5000 });
         if(await addToCartButton.isVisible()){
             await addToCartButton.click();
             console.log(`Product "${productName}" added to cart.`);

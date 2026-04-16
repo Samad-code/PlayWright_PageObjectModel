@@ -1,6 +1,6 @@
 import{test,expect} from '@playwright/test';
 
-exports.LoginPage = class LoginPage{
+export class LoginPage{
 
     constructor(page){
         this.page = page;
@@ -23,6 +23,6 @@ exports.LoginPage = class LoginPage{
         await this.page.click(this.loginButton);
     }
     
-    
+
 
 };

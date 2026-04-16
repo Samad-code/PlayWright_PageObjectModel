@@ -23,4 +23,26 @@ exports.CartPage = class CartPage{
         }
         throw new Error(`Product "${item}" not found in cart`);
     }
+
+
+    /* async removeItem(itemName){
+        await this.page.click(this.cart);
+        expect(this.page.url()).toBe('https://www.saucedemo.com/cart.html');
+        console.log("Cart page is displayed");
+
+
+        const cartElements = await this.page.$$(this.cartItem);
+        for(const element of cartElements){
+            const text = await element.textContent();
+            console.log(`Cart item: ${text}`);
+            if(itemName === text){
+                const slug = itemName.toLowerCase().replace(/ /g, '-');
+                const removeButton = await this.page.locator(`[data-test="remove-${slug}"]`);
+                await removeButton.click();
+                console.log(`Product "${itemName}" removed from cart.`);
+                return;
+            }
+        }
+        throw new Error(`Product "${itemName}" not found in cart`);
+    }*/
 };

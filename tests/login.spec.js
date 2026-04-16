@@ -1,9 +1,10 @@
-import { test, expect, chromium } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import { HomePage } from '../pages/homePage';
 import { CartPage } from '../pages/cartPage';
 import { AdditemPage } from '../pages/additemPage';
 import { MultipleItems } from '../pages/multipleitemsPage.js';
+import { RemoveItems } from '../pages/removeitemPage.js';
 
 test("Login with valid credentials", async ({page}) => {
 
@@ -47,10 +48,28 @@ test("Login with valid credentials", async ({page}) => {
     await page.waitForTimeout(1500);
 
 
+   
+    await loginPage.gotologinPage();
+    await loginPage.login('standard_user', 'secret_sauce');
+    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
+    expect(page.locator('.title')).toHaveText('Products');
+
     //Add 3 items to cart
     const multipleItems = new MultipleItems(page);
-    await multipleItems.addMultipleItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie']);
+    await multipleItems.addMultipleItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Test.allTheThings() T-Shirt (Red)']);
     await page.waitForTimeout(2000);
+
+    //Verify all 3 items in cart
+    await cartPage.verifyCart('Sauce Labs Fleece Jacket');
+    await cartPage.verifyCart('Sauce Labs Onesie');
+    await cartPage.verifyCart('Sauce Labs Bolt T-Shirt');
+    await cartPage.verifyCart('Test.allTheThings() T-Shirt (Red)');
+
+    //remove items from cart after verification
+    const removeitem = new RemoveItems(page);
+    await removeitem.removeItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Test.allTheThings() T-Shirt (Red)']);
+    
+    // await removeitem.removeItems(['Sauce Labs Onesie']);
 
 });
 
