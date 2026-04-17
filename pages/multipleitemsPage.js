@@ -14,10 +14,10 @@ exports.MultipleItems = class MultipleItems {
         for (const productName of productNames) {
             const slug = productName.toLowerCase().replace(/ /g, '-');
             
-            const addToCartButton = await this.page.locator(`[data-test="add-to-cart-${slug}"] `, { timeout: 10000 });
+            const addToCartButton = await this.page.locator(`[data-test="add-to-cart-${slug}"] `, { timeout: 5000 });
             console.log(await this.page.locator('[data-test^="add-to-cart"]').count());
             console.log(`Attempting to add "${addToCartButton}" to cart...`);
-            await expect(addToCartButton).toBeVisible({ timeout: 10000 });
+            await expect(addToCartButton).toBeVisible({ timeout: 5000 });
             if (await addToCartButton.isVisible()) {
                 await addToCartButton.click();
 

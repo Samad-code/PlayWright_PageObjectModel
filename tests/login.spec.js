@@ -5,21 +5,22 @@ import { CartPage } from '../pages/cartPage';
 import { AdditemPage } from '../pages/additemPage';
 import { MultipleItems } from '../pages/multipleitemsPage.js';
 import { RemoveItems } from '../pages/removeitemPage.js';
+import { AboutPage } from '../pages/aboutPage.js';
 
-test("Login with valid credentials", async ({page}) => {
+test.only("Login with valid credentials", async ({ page }) => {
 
-//Record video and slow down the execution for better visibility
-/*const browser = await chromium.launch({
-        slowMo: 1000,
-        headless: false
-    });
-    const context = await browser.newContext({
-        recordVideo: {
-            dir: 'videos/'
-        }
-    });
-    const page = await context.newPage();
-*/
+    //Record video and slow down the execution for better visibility
+    /*const browser = await chromium.launch({
+            slowMo: 1000,
+            headless: false
+        });
+        const context = await browser.newContext({
+            recordVideo: {
+                dir: 'videos/'
+            }
+        });
+        const page = await context.newPage();
+    */
 
     //Login
     const loginPage = new LoginPage(page);
@@ -27,9 +28,25 @@ test("Login with valid credentials", async ({page}) => {
     await loginPage.login('standard_user', 'secret_sauce');
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
     expect(page.locator('.title')).toHaveText('Products');
+    await page.waitForTimeout(2000);
+
+
+    //About page
+    const aboutPage = new AboutPage(page);
+    await aboutPage.navigateToAboutPage();
+    await page.waitForTimeout(5000);
+    //expect(page.url()).toBe('https://saucelabs.com/');
+    //const text = await page.locator('.MuiTypography-root MuiTypography-body2 css-l8sylz').textContent();
+    //expect(text).toBe("Sauce AI for Test Authoring: Move from intent to execution in minutes.");
+    
+    console.log("About page is displayed");
+
 
     //await page.waitForTimeout(2000);
 
+    await loginPage.gotologinPage();
+    await loginPage.login('standard_user', 'secret_sauce');
+    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
     //Home
     const homePage = new HomePage(page);
     await homePage.verifyProductList('Sauce Labs Backpack');
@@ -48,7 +65,7 @@ test("Login with valid credentials", async ({page}) => {
     await page.waitForTimeout(1500);
 
 
-   
+
     await loginPage.gotologinPage();
     await loginPage.login('standard_user', 'secret_sauce');
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
@@ -68,14 +85,14 @@ test("Login with valid credentials", async ({page}) => {
     //remove items from cart after verification
     const removeitem = new RemoveItems(page);
     await removeitem.removeItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Test.allTheThings() T-Shirt (Red)']);
-    
+
     // await removeitem.removeItems(['Sauce Labs Onesie']);
 
 });
 
-    
 
 
-    
+
+
 
 

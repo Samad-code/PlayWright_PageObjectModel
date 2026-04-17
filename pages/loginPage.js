@@ -7,6 +7,7 @@ export class LoginPage{
         this.username = '#user-name';
         this.password = '#password';
         this.loginButton = '#login-button';
+        
     }
     /*    this.page = page
         this.username= page.getByLabel('Username')
