@@ -28,17 +28,24 @@ test.only("Login with valid credentials", async ({ page }) => {
     await loginPage.login('standard_user', 'secret_sauce');
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
     expect(page.locator('.title')).toHaveText('Products');
-    await page.waitForTimeout(2000);
+    //await page.waitForTimeout(2000);
 
 
     //About page
     const aboutPage = new AboutPage(page);
     await aboutPage.navigateToAboutPage();
-    await page.waitForTimeout(5000);
+    //await page.waitForTimeout(5000);
     //expect(page.url()).toBe('https://saucelabs.com/');
-    //const text = await page.locator('.MuiTypography-root MuiTypography-body2 css-l8sylz').textContent();
-    //expect(text).toBe("Sauce AI for Test Authoring: Move from intent to execution in minutes.");
-    
+    const str = await page.locator(':text-is("Sauce AI for Test Authoring: Move from intent to execution in minutes.")').textContent();
+    await expect(page.locator(':text-is("Sauce AI for Test Authoring: Move from intent to execution in minutes.")')).toBeVisible();
+    console.log(`the heading is visible:   ${str}`);
+    const text = await page.locator('h1.MuiTypography-root.MuiTypography-h1.css-hqwp3n').textContent();
+    console.log(`About page heading: ${text}`);
+    expect(text).toBe("The World's Only Full-Lifecycle AI-Quality Platform");
+   // page.locator('svg').locator('path').nth(1).click();
+    //await page.waitForTimeout(2000); 
+    //page.locator('span').filter({ hasText: 'Sauce AI' }).first().click();
+    //await page.waitForTimeout(2000);
     console.log("About page is displayed");
 
 
@@ -57,7 +64,7 @@ test.only("Login with valid credentials", async ({ page }) => {
     //Add items to cart
     const additem = new AdditemPage(page);
     await additem.addToCart('Sauce Labs Bike Light');
-    await page.waitForTimeout(2000);
+    //await page.waitForTimeout(2000);
 
     //Cart
     const cartPage = new CartPage(page);
@@ -74,7 +81,7 @@ test.only("Login with valid credentials", async ({ page }) => {
     //Add 3 items to cart
     const multipleItems = new MultipleItems(page);
     await multipleItems.addMultipleItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Test.allTheThings() T-Shirt (Red)']);
-    await page.waitForTimeout(2000);
+    //await page.waitForTimeout(2000);
 
     //Verify all 3 items in cart
     await cartPage.verifyCart('Sauce Labs Fleece Jacket');
