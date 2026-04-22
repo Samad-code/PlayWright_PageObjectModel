@@ -7,7 +7,7 @@ import { MultipleItems } from '../pages/multipleitemsPage.js';
 import { RemoveItems } from '../pages/removeitemPage.js';
 import { AboutPage } from '../pages/aboutPage.js';
 
-test.only("Login with valid credentials", async ({ page }) => {
+test("Login with valid credentials", async ({ page }) => {
 
     //Record video and slow down the execution for better visibility
     /*const browser = await chromium.launch({
@@ -39,15 +39,17 @@ test.only("Login with valid credentials", async ({ page }) => {
     const str = await page.locator(':text-is("Sauce AI for Test Authoring: Move from intent to execution in minutes.")').textContent();
     await expect(page.locator(':text-is("Sauce AI for Test Authoring: Move from intent to execution in minutes.")')).toBeVisible();
     console.log(`the heading is visible:   ${str}`);
+
     const text = await page.locator('h1.MuiTypography-root.MuiTypography-h1.css-hqwp3n').textContent();
     console.log(`About page heading: ${text}`);
     expect(text).toBe("The World's Only Full-Lifecycle AI-Quality Platform");
-   // page.locator('svg').locator('path').nth(1).click();
-    //await page.waitForTimeout(2000); 
-    //page.locator('span').filter({ hasText: 'Sauce AI' }).first().click();
-    //await page.waitForTimeout(2000);
     console.log("About page is displayed");
 
+    //await page.locator('div.MuiStack-root.navText.navDropdown-text.css-19hiiex').locator('div').nth(0).click();
+    //const solutionHeading = await page.locator('h2.MuiTypography-root.MuiTypography-h2.css-1m9j0qg').textContent();
+    //console.log(`Solutions page heading: ${solutionHeading}`);
+    //expect(solutionHeading).toBe("Solutions");
+    //console.log("Solutions page is displayed");
 
     //await page.waitForTimeout(2000);
 
@@ -94,6 +96,8 @@ test.only("Login with valid credentials", async ({ page }) => {
     await removeitem.removeItems(['Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Test.allTheThings() T-Shirt (Red)']);
 
     // await removeitem.removeItems(['Sauce Labs Onesie']);
+
+
 
 });
 
