@@ -30,7 +30,7 @@ export class HiddenDropDown {
 
     async clickPIM() {
 
-        //await this.page.getByRole('link', { name: 'PIM' }).click();
+       
         await this.page.click(this.pim);
         expect(this.page.url()).toBe('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
         console.log("PIM page is displayed");
