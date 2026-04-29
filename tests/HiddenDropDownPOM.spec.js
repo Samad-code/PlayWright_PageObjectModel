@@ -1,8 +1,8 @@
 import {test, expect} from '@playwright/test';
 import {HiddenDropDown} from '../pages/HiddenDropDown.js';
 
-test.only('Hidden DropDown Test', async ({ page }) => {
-test.setTimeout(60000);
+test('Hidden DropDown Test', async ({ page }) => {
+test.setTimeout(80000);
 
 
     const login = new HiddenDropDown(page);

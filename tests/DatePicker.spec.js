@@ -7,8 +7,8 @@ test('Date Picker Test', async ({ page }) => {
    await page.goto('https://testautomationpractice.blogspot.com/');
 
     const Year = 2026;
-    const Month = 'July';
-    const Date = '06';
+    const Month = 'June';
+    const Date = '21';
 
 
    const calendar =  await page.locator('p #datepicker');
@@ -28,18 +28,19 @@ test('Date Picker Test', async ({ page }) => {
         await page.click('.ui-datepicker-next');
     }
 
-    /*const dateElements = await page.$$('.ui-state-default');
+    /*const dateElements = await page.$$("//a[@class='ui-state-default']");
     for (const dateElement of dateElements) {
         const dateText = await dateElement.textContent();
         if (dateText === Date) {
             await dateElement.click();
             break;
         }
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(2000);
     } */
-   
 
-        //Without loop
-        await page.click("//a[class='ui-state-default'] [text()= '+Date+']");
-        await page .click("//a[@class")
+         //Without loop
+   await page.locator(`//a[@class='ui-state-default' and text()='${Date}']`).click();
+   await page.waitForTimeout(3000);
+
+       
 });

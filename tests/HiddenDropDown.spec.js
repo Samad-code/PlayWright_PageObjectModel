@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 
+test.describe('Both Tests', ()=>{
+    test.setTimeout(10000)
 test('Hidden Dropdown Test', async ({ page }) => {
     test.setTimeout(60000);
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
@@ -11,7 +13,7 @@ test('Hidden Dropdown Test', async ({ page }) => {
     await page.getByRole('link', { name: 'PIM' }).click();
 
     await page.waitForTimeout(2000);
-    const jobTitleDropdown = await page.locator('div.oxd-grid-item').filter({ has: page.locator('label:text("Job Title")') }).locator('div.oxd-select-text');
+    const jobTitleDropdown =  page.locator('div.oxd-grid-item').filter({ has: page.locator('label:text("Job Title")') }).locator('div.oxd-select-text');
 
     await jobTitleDropdown.click();
 
@@ -36,8 +38,7 @@ test('Hidden Dropdown Test', async ({ page }) => {
     await page.waitForTimeout(5000);
 });
 
-test.only
-('Hidden Dropdown Test SUb Unit', async ({ page }) => {
+test('Hidden Dropdown Test SUb Unit', async ({ page }) => {
     test.setTimeout(60000);
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
@@ -52,7 +53,7 @@ test.only
 
     await subUnitDropdown.click();
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2500);
 
     const unitlistItems = await page.$$("//div[@role='listbox']//span");
     for (const item of unitlistItems) {
@@ -71,4 +72,5 @@ test.only
 
     }
 
+})
 });

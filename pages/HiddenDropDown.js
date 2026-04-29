@@ -12,7 +12,9 @@ export class HiddenDropDown {
         this.submitButton = 'button[type="submit"]',
 
             this.pim = '//span[normalize-space()="PIM"]'
-        this.jobTitleDropdown = this.page.locator('div.oxd-grid-item').filter({ has: this.page.locator('label:text("Job Title")') }).locator('div.oxd-select-text');
+        this.jobTitleDropdown = this.page.locator('div.oxd-grid-item')
+                                   .filter({ has: this.page.locator('label:text("Job Title")') })
+                                     .locator('div.oxd-select-text');
         //this.listItems = this.page.$$("//div[@role='listbox']//span");
     }
 
