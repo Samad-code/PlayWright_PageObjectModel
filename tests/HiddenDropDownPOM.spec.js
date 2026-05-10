@@ -15,4 +15,6 @@ test.setTimeout(80000);
 
     login.clickJobTitle('QA Engineer');
     await page.waitForTimeout(3000);
+
+    await this.page.goto('https://www.saucedemo.com/');
 });
