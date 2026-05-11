@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Both Tests', ()=>{
-    test.setTimeout(10000)
+    test.setTimeout(90000)
+
 test('Hidden Dropdown Test', async ({ page }) => {
     test.setTimeout(60000);
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
