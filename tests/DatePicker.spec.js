@@ -10,6 +10,7 @@ test('Date Picker Test', async ({ page }) => {
     const Month = 'June';
     const Date = '21';
     await expect(page.getByRole('link', { name: 'GUI Elements' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'GUI Elements' })).toHaveText('GUI Elements');
 
    const calendar =  await page.locator('p #datepicker');
    await calendar.waitFor({ state: 'visible' });
