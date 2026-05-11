@@ -9,7 +9,7 @@ test('Date Picker Test', async ({ page }) => {
     const Year = 2026;
     const Month = 'June';
     const Date = '21';
-
+    await expect(page.getByRole('link', { name: 'GUI Elements' })).toBeVisible();
 
    const calendar =  await page.locator('p #datepicker');
    await calendar.waitFor({ state: 'visible' });
@@ -40,7 +40,7 @@ test('Date Picker Test', async ({ page }) => {
 
          //Without loop
    await page.locator(`//a[@class='ui-state-default' and text()='${Date}']`).click();
-   await page.waitForTimeout(3000);
+   await page.waitForTimeout(2000);
 
        
 });
