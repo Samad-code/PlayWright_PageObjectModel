@@ -41,7 +41,7 @@ test('Date Picker Test', async ({ page }) => {
 
          //Without loop
    await page.locator(`//a[@class='ui-state-default' and text()='${Date}']`).click();
-   await page.waitForTimeout(2000);
+   await page.waitForTimeout(2000)
 
        
 });
