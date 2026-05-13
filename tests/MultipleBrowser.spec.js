@@ -26,7 +26,7 @@ await expect(page2).toHaveTitle("OrangeHRM: All in One HR Software for Businesse
 
 
 
-test.only("Handling multiple window from singale page", async()=>{
+test("Handling multiple window from singale page", async()=>{
 
 const browser = await chromium.launch()
 const context = await browser.newContext()
