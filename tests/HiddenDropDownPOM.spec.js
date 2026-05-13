@@ -23,7 +23,7 @@ test.setTimeout(80000);
 
 });
     test("UAT TEST @UAT", async({page})=>{
-        await page.goto('https://www.saucedemo.com/');
+        await page.goto('https://www.saucedemo.com/')
 
         
 //>>>>>>> 8f91b57393ddb8f43819867269ba9c8852c1c715
