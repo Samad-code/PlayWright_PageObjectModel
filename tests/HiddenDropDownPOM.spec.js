@@ -19,7 +19,7 @@ test.setTimeout(80000);
     login.clickJobTitle('QA Engineer');
     //await page.waitForTimeout(3000);
 
-    awaitpage.goto('https://www.saucedemo.com/');
+    await page.goto('https://www.saucedemo.com/');
 
 });
     test("UAT TEST @UAT", async({page})=>{
