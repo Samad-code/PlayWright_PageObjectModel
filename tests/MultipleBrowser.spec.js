@@ -20,7 +20,7 @@ await page1.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/l
 await expect(page1).toHaveTitle("OrangeHRM");
 
 await page2.goto('https://orangehrm.com/');
-await expect(page2).toHaveTitle("OrangeHRM: All in One HR Software for Businesses ");
+await expect(page2).toHaveTitle("OrangeHRM: All in One HR Software for Businesses | OrangeHRM");
 
 });
 
