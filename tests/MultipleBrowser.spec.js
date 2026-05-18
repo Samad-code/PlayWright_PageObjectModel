@@ -47,7 +47,7 @@ const newPage = await pagePromise;
 await expect(newPage).toHaveTitle("OrangeHRM: All in One HR Software for Businesses ");
 
 await page1.waitForTimeout(5000);
-await newPage.waitForTimeout(5000);
+await newPage.waitForTimeout(5000)
 
 
 // we can perfor action on bothe page b using the page variable - page1.locator('HDJW') for one page and newPage.locator("DHJJDWD") for another
