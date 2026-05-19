@@ -34,7 +34,7 @@ const page1 = await context.newPage();
 await page1.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 await expect(page1).toHaveTitle("OrangeHRM");
 
-//Create a event- open thsi event is keep the empty tab open and when
+//Create a event- open this event is keep the empty tab open and when
 //click on the link later that new page is opened in this already opened tab- 
 // Hence its kind of a promis the variable pagePromise only have the data of second page once the link of the page is clicked.
 const pagePromise = context.waitForEvent('page')
