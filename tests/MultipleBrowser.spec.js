@@ -46,7 +46,7 @@ const newPage = await pagePromise;
 // now using newPage we can perform action on the tab/window
 await expect(newPage).toHaveTitle("OrangeHRM: All in One HR Software for Businesses | OrangeHRM");
 
-await page1.waitForTimeout(5000);
+await page1.waitForTimeout(5000)
 await newPage.waitForTimeout(5000);
 
 
